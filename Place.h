@@ -3,44 +3,36 @@
 // Recitation: 215 – Luis Mieses Gomez, Recitation: 118 – Naga Sistla
 // Project 3
 
-#ifndef PLAYER_H
-#define PLAYER_H
-
+#include <iomanip>
 #include <string>
-
 using namespace std;
 
-class Player {
+class Place{
+    private:
+        string name;
+        int price;
+        int rent;
+        int houses;
+    public:
+        //constructors
+        Place();
+        Place(string n, int p, int r, int h);
 
-	private:
-	    string playerName;
-	    char gamePiece;
-	    int totalMoneyAmount;
-	    int location;
-	    bool indexOfLocation[40];	  
-	    bool alive;  
-	    
-	public:
-	    //constructors
-	    Player();
-	    Player(int money);
+        //getters
+        string getName();
+        int getPrice();
+        int getRent();
+        int getHouses();
 
-	    //setters
-	    void setPlayerName(string inputName);
-	    void setOwnedProperty(int inputIndex, bool isOwned); 
-	    void setLocation(int currentPlace); 
-        void setMoneyAmount(int num);
-	    //getters
-	    string getPlayerName();
-	    bool getOwnedProperty(int inputIndex);
-	    int getLocation();
-	    //bool isAlive();
-        int getMoneyAmount();
+        //setters
+        void setName(string n);
+        void setPrice(int p);
+        void setRent(int r);
+        void setHouses(int h);
+        
+        //functions
 
-	    //functions 
-        //void giveMoney(int giveAmount);
-	    //void takeMoney(int takeAmount);
-	    //void movePlayer(int moveAmount);  
-
+        //Adds a house to the place and increases the rent in accordance
+        //Makes sure 5 is the max amount of houses
+        //int addHouse(int num);
 };
-#endif
