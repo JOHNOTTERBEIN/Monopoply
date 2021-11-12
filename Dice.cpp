@@ -11,14 +11,12 @@ using namespace std;
 Dice::Dice()
 {
 	numSides = 6;
-  playerRoll = 0;
 }
-void Dice::setRollDice(int)
+int Dice::RollDice()
 {
-  srand(time(0));
-	playerRoll = rand() % numSides + 1;
-}
-int Dice::getRollDice()
-{
+    srand(time(0));
+    int playerRoll = 0;
+    playerRoll = rand() % numSides + 1;
+    
     return playerRoll;
 }
