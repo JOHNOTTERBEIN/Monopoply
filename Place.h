@@ -31,5 +31,8 @@ class Place{
         void setHouses(int h);
         
         //functions
+        
+        //Adds a house to the place and increases the rent in accordance
+        //Makes sure 5 is the max amount of houses
         int addHouse(int num);
 };
