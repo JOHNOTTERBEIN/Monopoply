@@ -30,4 +30,15 @@ int main(){
     c1.setMoney(0);
     c1.setMoneytf(false);
     cout << "c1's card name is: " << c1.getName() << " their description is: " << c1.getDes() << ", how much movement does the card cause: " << c1.getMove() << ", does it cause a movement? " << c1.getMovetf() << "How much money is in this card : " << c1.getMoney() << ", Does this cause a change in money? " << c1.getMoneytf() << endl;
+    Player pl1 = Player();
+    pl1.setPlayerName("Adrian");
+    cout<<"Player Name: "<<pl1.getPlayerName()<< endl;
+    pl1.setOwnedProperty(24, true);
+    cout<<"Does the player own the property at location 24: " << pl1.getPlayerName()<<endl;
+    pl1.setLocation(24);
+    cout<<"The player is at the location: " << pl1.getLocation()<<endl;
+    pl1.setMoneyAmount(2000);
+    cout<<"The player has" << pl1.getMoneyAmount() << "$ in their account" <<endl;
+    Dice dice;
+    cout<<"Dice Roll: " << dice.RollDice() << endl;
 }
