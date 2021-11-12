@@ -9,17 +9,13 @@
 class Dice 
 {
 	private:
-	int numSides;
-	int playerRoll;
+	    int numSides;
         
 	public:
-	//constructor
-	Dice(); 
-	//setters
-	void setRollDice(int);
-	//getters
-	int getRollDice();	    
+	    //constructor
+	    Dice(); 
+		//function
+	    int RollDice();	    
       
-        
 };
 #endif
