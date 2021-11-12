@@ -32,26 +32,29 @@ void Player::setLocation(int currentPlace){
 	location = currentPlace;
 	
 }
+void Player::setMoneyAmount(int num){
+    totalMoneyAmount = num;
+}
 
 string Player::getPlayerName(){
 	return playerName;
 }
 
-void Player::giveMoney(int giveAmount){
-	totalMoneyAmount += giveAmount;
-}
+// void Player::giveMoney(int giveAmount){
+// 	totalMoneyAmount += giveAmount;
+// }
 
-void Player::takeMoney(int takeAmount){
-	totalMoneyAmount -= takeAmount;
-}
+// void Player::takeMoney(int takeAmount){
+// 	totalMoneyAmount -= takeAmount;
+// }
 
 int Player::getMoneyAmount(){
 	return totalMoneyAmount;
 }
 
-void Player::movePlayer(int moveAmount){
-	location = (location + moveAmount) % 40;
-}
+// void Player::movePlayer(int moveAmount){
+// 	location = (moveAmount + location) % 40;
+// }
 
 int Player::getLocation(){
 	return location;
@@ -65,6 +68,6 @@ bool Player::getOwnedProperty(int inputIndex){
 	return indexOfLocation[inputIndex];
 }
 
-bool Player::isAlive(){
-	return alive;
-}
+// bool Player::isAlive(){
+// 	return alive;
+// }
