@@ -2,3 +2,34 @@
 // Author: John Otterbein, Adrian Nica
 // Recitation: 215 – Luis Mieses Gomez, Recitation: 118 – Naga Sistla
 // Project 3
+
+#include <iomanip>
+#include <string>
+using namespace std;
+
+class Place{
+    private:
+        string name;
+        int price;
+        int rent;
+        int houses;
+    public:
+        //constructors
+        Place();
+        Place(string n, int p, int r, int h);
+
+        //getters
+        string getName();
+        int getPrice();
+        int getRent();
+        int getHouses();
+
+        //setters
+        void setName(string n);
+        void setPrice(int p);
+        void setRent(int r);
+        void setHouses(int h);
+        
+        //functions
+        int addHouse(int num);
+};
