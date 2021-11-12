@@ -9,13 +9,13 @@
 using namespace std;
 
 //constructors
-Card::Card(string n, string d, int move, bool movetf, int dollar, bool moneytf){
+Card::Card(string n, string d, int move, bool movetf, int dollar, bool dollartf){
     name = n;
     description = d;
     movement = move;
     movementtf = movetf;
     money = dollar;
-    moneytf = moneytf;
+    moneytf = dollartf;
 }
 
 //getters
@@ -35,7 +35,7 @@ int Card::getMoney(){
     return money;
 }
 bool Card::getMoneytf(){
-    return moneytf
+    return moneytf;
 }
 
 //setters
@@ -61,4 +61,4 @@ void Card::setMoneytf(bool m){
 //functions
 
 //this will read out the description and apply whatever the card does to the player
-void Card::applyCard();
+//void Card::applyCard();
