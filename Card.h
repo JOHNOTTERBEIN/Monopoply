@@ -36,7 +36,7 @@ class Card{
         void setMoneytf(bool m);
 
         //functions
-    
+
         //this will read out the description and apply whatever the card does to the player
-        void applyCard();
+        //void applyCard();
 };
