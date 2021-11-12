@@ -1,6 +1,6 @@
 // CS1300 Fall 2021
-// Author: John Otterbein
-// Recitation: 215 – Luis Mieses Gomez
+// Author: John Otterbein, Adrian Nica
+// Recitation: 215 – Luis Mieses Gomez, Recitation: 118 – Naga Sistla
 // Project 3
 
 #ifndef PLAYER_H
@@ -29,21 +29,18 @@ class Player {
 	    void setPlayerName(string inputName);
 	    void setOwnedProperty(int inputIndex, bool isOwned); 
 	    void setLocation(int currentPlace); 
-	    void setGamePieceName(string inputPieceName);
-	    void setMoneyAmount(int inputNum); 
-	
+        void setMoneyAmount(int num);
 	    //getters
 	    string getPlayerName();
 	    bool getOwnedProperty(int inputIndex);
 	    int getLocation();
-	    bool isAlive();
-	    string getGamePieceName();
-       int getMoneyAmount();
+	    //bool isAlive();
+        int getMoneyAmount();
 
 	    //functions 
-       void giveMoney(int giveAmount);
-	    void takeMoney(int takeAmount);
-	    void movePlayer(int moveAmount);  
+        //void giveMoney(int giveAmount);
+	    //void takeMoney(int takeAmount);
+	    //void movePlayer(int moveAmount);  
 
 };
 #endif
