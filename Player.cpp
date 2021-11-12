@@ -50,7 +50,7 @@ int Player::getMoneyAmount(){
 }
 
 void Player::movePlayer(int moveAmount){
-	location += moveAmount;
+	location = (location + moveAmount) % 40;
 }
 
 int Player::getLocation(){
