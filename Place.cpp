@@ -54,4 +54,4 @@ void Place::setHouses(int h){
 
 //Adds a house to the place and increases the rent in accordance
 //Makes sure 5 is the max amount of houses
-int Place::addHouse(int num);
+//int Place::addHouse(int num);
