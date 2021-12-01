@@ -12,11 +12,15 @@ class Place{
         string name;
         int price;
         int rent;
-        int houses;
+        int numHouses;
+        int house1;
+        int house2;
+        int house3;
+        int house4;
     public:
         //constructors
         Place();
-        Place(string n, int p, int r, int h);
+        Place(string n, int p, int r, int nh,int h1, int h2, int h3, int h4);
 
         //getters
         string getName();
@@ -28,11 +32,11 @@ class Place{
         void setName(string n);
         void setPrice(int p);
         void setRent(int r);
-        void setHouses(int h);
+        void setHouses(int h, int num);
         
         //functions
 
         //Adds a house to the place and increases the rent in accordance
         //Makes sure 5 is the max amount of houses
-        //int addHouse(int num);
+        int addHouse(int num);
 };
