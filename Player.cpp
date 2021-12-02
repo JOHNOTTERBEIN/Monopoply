@@ -68,3 +68,21 @@ void Player::moveP(int distance)
 	previousLocation = currentLocation;
 	currentLocation = (distance + currentLocation) % 40;
 }
+
+void Player::addPlace(Place p){
+	places.push_back(p);
+	if(places.size()<=2){
+		for(int i = 0; i<places.size()-1; i++){
+			for(int j = i+1;j<places.size(); j++){
+				if(places[i].getPrice()>places[j].getPrice()){
+					Place temp = places[i];
+					places[i] = places[j];
+					places[j] = temp;
+				}
+			}
+		}
+	}
+}
+vector<Place> Player::listPlaces(){
+	return places;
+}
