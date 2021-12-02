@@ -39,4 +39,6 @@ class Player {
 		void moveP(int distance);
 		void addMoney(int amount);
 		void removeMoney(int amount);
+		void addPlace(Place p);
+		vector<Place> listPlaces();
 };
