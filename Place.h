@@ -19,6 +19,7 @@ class Place{
         int house4;
         int buildingCost;
         bool owned;
+        bool set;
     public:
         //constructors
         Place();
@@ -30,17 +31,16 @@ class Place{
         int getPrice();
         int getRent();
         int getHouses();
-
+        int getHouseCost();
         //setters
         void setName(string n);
         void setPrice(int p);
         void setRent(int r);
         void setHouses(int h, int num);
         void setOwned(bool o);
-        
         //functions
 
         //Adds a house to the place and increases the rent in accordance
         //Makes sure 5 is the max amount of houses
-        int addHouse(int num);
+        void addHouse();
 };
