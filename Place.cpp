@@ -19,7 +19,7 @@ Place::Place(){
     house3 = 0;
     house4 = 0;
 }
-Place::Place(string n, int p, int r, int nh, int h1, int h2, int h3, int h4){
+Place::Place(string n, int p, int r, int nh, int h1, int h2, int h3, int h4, int c){
     name = n;
     price = p;
     rent = r;
@@ -28,9 +28,14 @@ Place::Place(string n, int p, int r, int nh, int h1, int h2, int h3, int h4){
     house2 = h2;
     house3 = h3;
     house4 = h4;
+    buildingCost = c;
+    owned = false;
 }
 
 //getters
+bool Place::isOwned(){
+    return owned;
+}
 string Place::getName(){
     return name;
 }
@@ -45,6 +50,9 @@ int Place::getHouses(){
 }
 
 //setters
+void Place::setOwned(bool o){
+    owned = o;
+}
 void Place::setName(string n){
     name = n;
 }
