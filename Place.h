@@ -17,12 +17,15 @@ class Place{
         int house2;
         int house3;
         int house4;
+        int buildingCost;
+        bool owned;
     public:
         //constructors
         Place();
-        Place(string n, int p, int r, int nh,int h1, int h2, int h3, int h4);
+        Place(string n, int p, int r, int nh,int h1, int h2, int h3, int h4, int c);
 
         //getters
+        bool isOwned();
         string getName();
         int getPrice();
         int getRent();
@@ -33,6 +36,7 @@ class Place{
         void setPrice(int p);
         void setRent(int r);
         void setHouses(int h, int num);
+        void setOwned(bool o);
         
         //functions
 
