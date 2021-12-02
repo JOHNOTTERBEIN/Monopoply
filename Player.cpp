@@ -55,3 +55,16 @@ void Player::setOwnedProperty(int inputIndex, bool isOwned){
 bool Player::getOwnedProperty(int inputIndex){
 	return indexOfLocation[inputIndex];
 }
+void Player::addMoney(int amount)
+{
+	totalMoneyAmount+=amount;
+}
+void Player::removeMoney(int amount)
+{
+	totalMoneyAmount-=amount;
+}
+void Player::moveP(int distance)
+{
+	previousLocation = currentLocation;
+	currentLocation = (distance + currentLocation) % 40;
+}
