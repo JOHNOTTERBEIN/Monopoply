@@ -5,9 +5,12 @@
 
 #include "Player.h"
 
+using namespace std;
+
 Player::Player(){
 	totalMoneyAmount = 1500;
-	location = 0;
+	currentLocation = 0;
+	previousLocation = 0;
 	for(int i = 0; i < 40; i++)
     {
 		indexOfLocation[i] = false;
@@ -15,22 +18,15 @@ Player::Player(){
 	alive = true;
 	playerName = "";
 }
-
-Player::Player(int money){
-	totalMoneyAmount = money;
-	location = 0;
-	for(int i = 0; i < 40; i++){
-		indexOfLocation[i] = false;
-	}
-	alive = true;
-}
 void Player::setPlayerName(string inputName){
 	playerName = inputName;
 }
 
 void Player::setLocation(int currentPlace){
-	location = currentPlace;
+	previousLocation = currentLocation;
+	currentLocation = currentPlace;
 	
+
 }
 void Player::setMoneyAmount(int num){
     totalMoneyAmount = num;
@@ -40,24 +36,16 @@ string Player::getPlayerName(){
 	return playerName;
 }
 
-// void Player::giveMoney(int giveAmount){
-// 	totalMoneyAmount += giveAmount;
-// }
-
-// void Player::takeMoney(int takeAmount){
-// 	totalMoneyAmount -= takeAmount;
-// }
-
 int Player::getMoneyAmount(){
 	return totalMoneyAmount;
 }
 
-// void Player::movePlayer(int moveAmount){
-// 	location = (moveAmount + location) % 40;
-// }
+int Player::getCurrentLocation(){
+	return currentLocation;
+}
 
-int Player::getLocation(){
-	return location;
+int Player::getPreviousLocation(){
+	return previousLocation;
 }
 
 void Player::setOwnedProperty(int inputIndex, bool isOwned){
@@ -67,7 +55,3 @@ void Player::setOwnedProperty(int inputIndex, bool isOwned){
 bool Player::getOwnedProperty(int inputIndex){
 	return indexOfLocation[inputIndex];
 }
-
-// bool Player::isAlive(){
-// 	return alive;
-// }
