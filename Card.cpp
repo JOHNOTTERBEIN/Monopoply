@@ -3,17 +3,21 @@
 // Recitation: 215 – Luis Mieses Gomez, Recitation: 118 – Naga Sistla
 // Project 3
 
+#include <iostream>
 #include <iomanip>
 #include <string>
 #include "Card.h"
+#include "Player.h"
 using namespace std;
 
 //constructors
-Card::Card(string n, string d, int move, bool movetf, int dollar, bool dollartf){
+Card::Card(string n, string d, int move, bool movetf, int p, bool ptf, int dollar, bool dollartf){
     name = n;
     description = d;
     movement = move;
     movementtf = movetf;
+    position = p;
+    positiontf = ptf;
     money = dollar;
     moneytf = dollartf;
 }
@@ -61,4 +65,16 @@ void Card::setMoneytf(bool m){
 //functions
 
 //this will read out the description and apply whatever the card does to the player
-//void Card::applyCard();
+// void Card::applyCard(){
+//     cout << description << endl;
+//     if(movementtf){
+//         player.movePlayer(movement);
+//     }
+//     if(positiontf){
+//         player.setLocation(position);
+//     }
+//     if(moneytf){
+//         player.giveMoney(money);
+//     }
+
+// }
