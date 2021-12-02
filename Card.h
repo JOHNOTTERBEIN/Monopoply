@@ -5,6 +5,7 @@
 
 #include <iomanip>
 #include <string>
+#include "Player.h"
 using namespace std;
 
 class Card{
@@ -13,11 +14,13 @@ class Card{
         string description;
         int movement;
         bool movementtf;
+        int position;
+        bool positiontf;
         int money;
         bool moneytf;
     public:
         //constructors
-        Card(string n, string d, int move, bool movetf, int dollar, bool moneytf);
+        Card(string n, string d, int move, bool movetf, int p, bool ptf, int dollar, bool moneytf);
 
         //getters
         string getName();
@@ -38,5 +41,5 @@ class Card{
         //functions
 
         //this will read out the description and apply whatever the card does to the player
-        //void applyCard();
+        void applyCard();
 };
