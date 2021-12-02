@@ -3,10 +3,11 @@
 // Recitation: 215 – Luis Mieses Gomez, Recitation: 118 – Naga Sistla
 // Project 3
 
-#ifndef PLAYER_H
-#define PLAYER_H
+
 
 #include <string>
+#include <vector>
+#include "Place.h"
 
 using namespace std;
 
@@ -14,17 +15,15 @@ class Player {
 
 	private:
 	    string playerName;
-	    char gamePiece;
 	    int totalMoneyAmount;
-	    int location;
+	    int currentLocation;
+		int previousLocation;
+		vector<Place> places;
 	    bool indexOfLocation[40];	  
 	    bool alive;  
-	    
-	public:
+	public:	
 	    //constructors
 	    Player();
-	    Player(int money);
-
 	    //setters
 	    void setPlayerName(string inputName);
 	    void setOwnedProperty(int inputIndex, bool isOwned); 
@@ -33,14 +32,18 @@ class Player {
 	    //getters
 	    string getPlayerName();
 	    bool getOwnedProperty(int inputIndex);
-	    int getLocation();
-	    //bool isAlive();
+	    int getCurrentLocation();
+		int getPreviousLocation();
         int getMoneyAmount();
-
-	    //functions 
-        //void giveMoney(int giveAmount);
-	    //void takeMoney(int takeAmount);
-	    //void movePlayer(int moveAmount);  
+		//functions
+		void moveP(int distance){
+			previousLocation = currentLocation;
+			currentLocation = (distance + currentLocation) % 40;
+		}
+		void addAmount(int amount)
+		{
+			totalMoneyAmount+=amount;
+		}
 
 };
-#endif
+
