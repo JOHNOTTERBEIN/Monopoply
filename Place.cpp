@@ -18,6 +18,10 @@ Place::Place(){
     house2 = 0;
     house3 = 0;
     house4 = 0;
+    buildingCost = 0;
+    owned = false;
+    set = false;
+
 }
 Place::Place(string n, int p, int r, int nh, int h1, int h2, int h3, int h4, int c){
     name = n;
@@ -30,6 +34,7 @@ Place::Place(string n, int p, int r, int nh, int h1, int h2, int h3, int h4, int
     house4 = h4;
     buildingCost = c;
     owned = false;
+    set = false;
 }
 
 //getters
@@ -62,40 +67,31 @@ void Place::setPrice(int p){
 void Place::setRent(int r){
     rent = r;
 }
-void Place::setHouses(int h, int num){
-    if(num==1){
-        house1 = h;
-    }
-    else if(num==2){
-        house2 = h;
-    }
-    else if(num==3){
-        house3 = h;
-    }
-    else if(num==4){
-        house4 = h;
-    }
+int Place::getHouseCost()
+{
+    return buildingCost;
 }
-
 //functions
 
 //Adds a house to the place and increases the rent in accordance
 //Makes sure 5 is the max amount of houses
-int Place::addHouse(int num){
-    if(numHouses == 0){
-        numHouses++;
-        setRent(house1);
-    }
-    else if(numHouses == 1){
-        numHouses++;
-        setRent(house2);
-    }
-    else if(numHouses == 2){
-        numHouses++;
-        setRent(house3);
-    }
-    else{
-        numHouses++;
-        setRent(house4);
+void Place::addHouse(){
+    if(numHouses<4){
+        if(numHouses == 0){
+            numHouses++;
+            setRent(house1);
+        }
+        else if(numHouses == 1){
+            numHouses++;
+            setRent(house2);
+        }
+        else if(numHouses == 2){
+            numHouses++;
+            setRent(house3);
+        }
+        else{
+            numHouses++;
+            setRent(house4);
+        }
     }
 }
