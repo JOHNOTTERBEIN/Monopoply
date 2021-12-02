@@ -85,3 +85,11 @@ void Player::addPlace(Place p){
 vector<Place> Player::listPlaces(){
 	return places;
 }
+
+void Player::addHouse(string name){
+	for(int i = 0; i<places.size(); i++){
+		if(places[i].getName()==name){
+			places[i].addHouse();
+		}
+	}
+}
