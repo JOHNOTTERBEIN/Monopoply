@@ -36,14 +36,7 @@ class Player {
 		int getPreviousLocation();
         int getMoneyAmount();
 		//functions
-		void moveP(int distance){
-			previousLocation = currentLocation;
-			currentLocation = (distance + currentLocation) % 40;
-		}
-		void addAmount(int amount)
-		{
-			totalMoneyAmount+=amount;
-		}
-
+		void moveP(int distance);
+		void addMoney(int amount);
+		void removeMoney(int amount);
 };
-
