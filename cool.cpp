@@ -1,9 +1,10 @@
-#include <iostream>
 #include <string>
-#include "Player.h"
 #include <cstdlib>
+#include "Player.h"
 #include <ctime>
+#include <iostream>
 using namespace std;
+
 void printMap(int pl1, int pl2){
     string sq[40] = {};
     sq[0] = "GO  ";
@@ -110,6 +111,18 @@ int main(){
             pl1.setOwnedProperty(6, true);
             pl1.setOwnedProperty(8, true);
             pl1.setOwnedProperty(9, true);
+            places[9].addHouse();
+            places[6].addHouse();
+            places[8].addHouse();
+            places[6].addHouse();
+            places[8].addHouse();
+            places[9].addHouse();
+            places[6].addHouse();
+            places[8].addHouse();
+            places[9].addHouse();
+            places[6].addHouse();
+            places[8].addHouse();
+
             //Index 1
             if(pl1.getCurrentLocation() == 1)
             {
@@ -163,7 +176,7 @@ int main(){
                                         else
                                         {
                                             pl1.removeMoney(50);
-                                            places[1].addHouse(0);
+                                            places[1].addHouse();
                                             break;
                                         }
                                     }
@@ -252,7 +265,7 @@ int main(){
                                         else
                                         {
                                             pl1.removeMoney(50);
-                                            places[3].addHouse(0);
+                                            places[3].addHouse();
                                             break;
                                         }
                                     }
@@ -296,20 +309,20 @@ int main(){
             //Index 6
             if(pl1.getCurrentLocation() == 6)
             {
-                                cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[6].getName()<<endl;
-                if(places[6].isOwned() == false)
+                cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
+                if(places[pl1.getCurrentLocation()].isOwned() == false)
                 {
                     while(true)
                     {
-                        cout<<"Would you like to buy " <<places[6].getName()<<" for $"<<places[6].getPrice()<<"?"<<" Enter 'y' for yes or 'n' for no."<<endl;
+                        cout<<"Would you like to buy " <<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getPrice()<<"?"<<" Enter 'y' for yes or 'n' for no."<<endl;
                         cin>>ans;
                         if(ans == 'y' || ans =='n')
                         {
                             if(ans=='y')
                             {
-                                places[6].setOwned(true);
-                                pl1.setOwnedProperty(6, true);
-                                pl1.removeMoney(places[6].getPrice());
+                                places[pl1.getCurrentLocation()].setOwned(true);
+                                pl1.setOwnedProperty(pl1.getCurrentLocation(), true);
+                                pl1.removeMoney(places[pl1.getCurrentLocation()].getPrice());
                                 break;
                             }
                             else if(ans=='n')
@@ -323,18 +336,17 @@ int main(){
                         }
                     }
                 }
-                else if(places[6].isOwned() == true)
+                else if(places[pl1.getCurrentLocation()].isOwned() == true)
                 {
-                    if(pl1.getOwnedProperty(6) == true)
+                    if(pl1.getOwnedProperty(pl1.getCurrentLocation()) == true)
                     {
                         if(pl1.getOwnedProperty(8) == true && pl1.getOwnedProperty(9) == true)
                         {
-                            if(places[8].getHouses() == 0 && places[9].getHouses() == 0)
+                            if(places[pl1.getCurrentLocation()].getHouses() == 0 && places[8].getHouses() >= 0 && places[9].getHouses() >= 0 && places[8].getHouses() <= 1 && places[9].getHouses())
                             {
                                 while(true)
                                 {
-                                    //Only did one house we gotta figure what to do... coding 4 houses for each place seems like hell 
-                                    cout<<"Would you like to buy House 1 at "<<places[6].getName()<<" for $50? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cout<<"Would you like to buy House 1 at "<<places[pl1.getCurrentLocation()].getName()<<" for $50? Enter 'y' for yes or 'n' for no."<<endl;
                                     cin>>ans;
                                     if(ans=='y')
                                     {    
@@ -346,7 +358,7 @@ int main(){
                                         else
                                         {
                                             pl1.removeMoney(50);
-                                            places[6].addHouse(0);
+                                            places[pl1.getCurrentLocation()].addHouse();
                                             break;
                                         }
                                     }
@@ -360,20 +372,105 @@ int main(){
                                     }
                                 }
                             }
+                            //Buy second house
+                            else if(places[pl1.getCurrentLocation()].getHouses() == 1 && places[8].getHouses() >= 1 && places[9].getHouses() >= 1 && places[8].getHouses() <= 2 && places[9].getHouses() <= 2)
+                            {
+                                while(true)
+                                {
+                                    cout<<"Would you like to buy House 2 at "<<places[pl1.getCurrentLocation()].getName()<<" for $50? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cin>>ans;
+                                    if(ans=='y')
+                                    {    
+                                        if(pl1.getMoneyAmount() < 50)
+                                        {
+                                            cout<<"You don't have enough money to complete this purchase!"<<endl;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            pl1.removeMoney(50);
+                                            places[pl1.getCurrentLocation()].addHouse();
+                                            break;
+                                        }
+                                    }
+                                    else if(ans=='n')       
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout<<"Please enter a valid input!"<<endl;
+                                    }
+                                }
+                            }
+                            //Buy third house 
+                            else if(places[pl1.getCurrentLocation()].getHouses() == 2 && places[8].getHouses() >= 2 && places[9].getHouses() >= 2 && places[8].getHouses() <= 3 && places[9].getHouses() <= 3)
+                            {
+                                while(true)
+                                {
+                                    cout<<"Would you like to buy House 3 at "<<places[pl1.getCurrentLocation()].getName()<<" for $50? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cin>>ans;
+                                    if(ans=='y')
+                                    {    
+                                        if(pl1.getMoneyAmount() < 50)
+                                        {
+                                            cout<<"You don't have enough money to complete this purchase!"<<endl;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            pl1.removeMoney(50);
+                                            places[pl1.getCurrentLocation()].addHouse();
+                                            break;
+                                        }
+                                    }
+                                    else if(ans=='n')       
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout<<"Please enter a valid input!"<<endl;
+                                    }
+                                }                               
+                            }
+                            //Buy fourth house
+                            else if(places[pl1.getCurrentLocation()].getHouses() == 3 && places[8].getHouses() >= 3 && places[9].getHouses() >= 3 && places[8].getHouses() <= 4 && places[9].getHouses() <= 4)
+                            {
+                                while(true)
+                                {
+                                    cout<<"Would you like to buy House 4 at "<<places[pl1.getCurrentLocation()].getName()<<" for $50? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cin>>ans;
+                                    if(ans=='y')
+                                    {    
+                                        if(pl1.getMoneyAmount() < 50)
+                                        {
+                                            cout<<"You don't have enough money to complete this purchase!"<<endl;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            pl1.removeMoney(50);
+                                            places[pl1.getCurrentLocation()].addHouse();
+                                            break;
+                                        }
+                                    }
+                                    else if(ans=='n')       
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout<<"Please enter a valid input!"<<endl;
+                                    }
+                                }
+                            } 
                         }
                     }
-                    else if(pl2.getOwnedProperty(6) == true)
+                    else if(pl2.getOwnedProperty(pl1.getCurrentLocation()) == true)
                     {
-                        if(places[6].getHouses() == 0)
-                        {
-                            pl1.removeMoney(places[6].getRent());
-                            pl2.addMoney(places[6].getRent());
-                        }
-                        else if(places[6].getHouses() == 1)
-                        {
-                            pl1.removeMoney(places[6].getRent());
-                            pl2.addMoney(places[6].getRent());
-                        }
+                            pl1.removeMoney(places[pl1.getCurrentLocation()].getRent());
+                            pl2.addMoney(places[pl1.getCurrentLocation()].getRent());
                     }
                 }
             }
@@ -383,22 +480,22 @@ int main(){
 
             }
             //Index 8
-            if(pl1.getCurrentLocation() == 8)
-            {
-                                cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[8].getName()<<endl;
-                if(places[8].isOwned() == false)
+            if(pl1.getCurrentLocation() == 8) 
+                cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
+                if(places[pl1.getCurrentLocation()].isOwned() == false)
                 {
                     while(true)
                     {
-                        cout<<"Would you like to buy " <<places[8].getName()<<" for $"<<places[8].getPrice()<<"?"<<" Enter 'y' for yes or 'n' for no."<<endl;
+                        cout<<"Would you like to buy " <<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getPrice()<<"?"<<" Enter 'y' for yes or 'n' for no."<<endl;
                         cin>>ans;
                         if(ans == 'y' || ans =='n')
                         {
                             if(ans=='y')
                             {
-                                places[8].setOwned(true);
-                                pl1.setOwnedProperty(8, true);
-                                pl1.removeMoney(places[8].getPrice());
+                                places[pl1.getCurrentLocation()].setOwned(true);
+                                pl1.setOwnedProperty(pl1.getCurrentLocation(), true);
+                                pl1.addPlace(places[pl1.getCurrentLocation()]);
+                                pl1.removeMoney(places[pl1.getCurrentLocation()].getPrice());
                                 break;
                             }
                             else if(ans=='n')
@@ -412,30 +509,29 @@ int main(){
                         }
                     }
                 }
-                else if(places[8].isOwned() == true)
+                else if(places[pl1.getCurrentLocation()].isOwned() == true)
                 {
-                    if(pl1.getOwnedProperty(8) == true)
+                    if(pl1.getOwnedProperty(pl1.getCurrentLocation()) == true)
                     {
-                        if(pl1.getOwnedProperty(6) == true && pl1.getOwnedProperty(9) == true)
+                        if(pl1.getOwnedProperty(6) == true && pl1.getOwnedProperty(8) == true)
                         {
-                            if(places[6].getHouses() == 0 && places[9].getHouses() == 0)
+                            if(places[pl1.getCurrentLocation()].getHouses() == 0 && places[6].getHouses() >= 0 && places[8].getHouses() >= 0 && places[6].getHouses() <= 1 && places[8].getHouses()<=1)
                             {
                                 while(true)
                                 {
-                                    //Only did one house we gotta figure what to do... coding 4 houses for each place seems like hell 
-                                    cout<<"Would you like to buy House 1 at "<<places[8].getName()<<" for $50? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cout<<"Would you like to buy House 1 at "<<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getHouseCost()<<"? Enter 'y' for yes or 'n' for no."<<endl;
                                     cin>>ans;
                                     if(ans=='y')
                                     {    
-                                        if(pl1.getMoneyAmount() < 50)
+                                        if(pl1.getMoneyAmount() < places[pl1.getCurrentLocation()].getHouseCost())
                                         {
                                             cout<<"You don't have enough money to complete this purchase!"<<endl;
                                             break;
                                         }
                                         else
                                         {
-                                            pl1.removeMoney(50);
-                                            places[8].addHouse(0);
+                                            pl1.removeMoney(places[pl1.getCurrentLocation()].getHouseCost());
+                                            places[pl1.getCurrentLocation()].addHouse();
                                             break;
                                         }
                                     }
@@ -449,40 +545,126 @@ int main(){
                                     }
                                 }
                             }
+                            //Buy second house
+                            else if(places[pl1.getCurrentLocation()].getHouses() == 1 && places[6].getHouses() >= 1 && places[8].getHouses() >= 1 && places[6].getHouses() <= 2 && places[8].getHouses() <= 2)
+                            {
+                                while(true)
+                                {
+                                    cout<<"Would you like to buy House 2 at "<<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getHouseCost()<<"? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cin>>ans;
+                                    if(ans=='y')
+                                    {    
+                                        if(pl1.getMoneyAmount() < places[pl1.getCurrentLocation()].getHouseCost())
+                                        {
+                                            cout<<"You don't have enough money to complete this purchase!"<<endl;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            pl1.removeMoney(places[pl1.getCurrentLocation()].getHouseCost());
+                                            places[pl1.getCurrentLocation()].addHouse();
+                                            break;
+                                        }
+                                    }
+                                    else if(ans=='n')       
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout<<"Please enter a valid input!"<<endl;
+                                    }
+                                }
+                            }
+                            //Buy third house 
+                            else if(places[pl1.getCurrentLocation()].getHouses() == 2 && places[6].getHouses() >= 2 && places[8].getHouses() >= 2 && places[6].getHouses() <= 3 && places[8].getHouses() <= 3)
+                            {
+                                while(true)
+                                {
+                                    cout<<"Would you like to buy House 3 at "<<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getHouseCost()<<"? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cin>>ans;
+                                    if(ans=='y')
+                                    {    
+                                        if(pl1.getMoneyAmount() < places[pl1.getCurrentLocation()].getHouseCost())
+                                        {
+                                            cout<<"You don't have enough money to complete this purchase!"<<endl;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            pl1.removeMoney(places[pl1.getCurrentLocation()].getHouseCost());
+                                            places[pl1.getCurrentLocation()].addHouse();
+                                            break;
+                                        }
+                                    }
+                                    else if(ans=='n')       
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout<<"Please enter a valid input!"<<endl;
+                                    }
+                                }                               
+                            }
+                            //Buy fourth house
+                            else if(places[pl1.getCurrentLocation()].getHouses() == 3 && places[6].getHouses() >= 3 && places[8].getHouses() >= 3 && places[6].getHouses() <= 4 && places[8].getHouses() <= 4)
+                            {
+                                while(true)
+                                {
+                                    cout<<"Would you like to buy House 4 at "<<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getHouseCost()<<"? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cin>>ans;
+                                    if(ans=='y')
+                                    {    
+                                        if(pl1.getMoneyAmount() < places[pl1.getCurrentLocation()].getHouseCost())
+                                        {
+                                            cout<<"You don't have enough money to complete this purchase!"<<endl;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            pl1.removeMoney(places[pl1.getCurrentLocation()].getHouseCost());
+                                            places[pl1.getCurrentLocation()].addHouse();
+                                            break;
+                                        }
+                                    }
+                                    else if(ans=='n')       
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout<<"Please enter a valid input!"<<endl;
+                                    }
+                                }
+                            } 
                         }
                     }
-                    else if(pl2.getOwnedProperty(8) == true)
+                    else if(pl2.getOwnedProperty(pl1.getCurrentLocation()) == true)
                     {
-                        if(places[8].getHouses() == 0)
-                        {
-                            pl1.removeMoney(places[8].getRent());
-                            pl2.addMoney(places[8].getRent());
-                        }
-                        else if(places[8].getHouses() == 1)
-                        {
-                            pl1.removeMoney(places[8].getRent());
-                            pl2.addMoney(places[8].getRent());
-                        }
+                            pl1.removeMoney(places[pl1.getCurrentLocation()].getRent());
+                            pl2.addMoney(places[pl1.getCurrentLocation()].getRent());
                     }
                 }
             }
             //Index 9
-            if(pl1.getCurrentLocation() == 9)
+            if(pl1.getCurrentLocation() == 9) 
             {
-                                cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[9].getName()<<endl;
-                if(places[9].isOwned() == false)
+                cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
+                if(places[pl1.getCurrentLocation()].isOwned() == false)
                 {
                     while(true)
                     {
-                        cout<<"Would you like to buy " <<places[9].getName()<<" for $"<<places[9].getPrice()<<"?"<<" Enter 'y' for yes or 'n' for no."<<endl;
+                        cout<<"Would you like to buy " <<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getPrice()<<"?"<<" Enter 'y' for yes or 'n' for no."<<endl;
                         cin>>ans;
                         if(ans == 'y' || ans =='n')
                         {
                             if(ans=='y')
                             {
-                                places[9].setOwned(true);
-                                pl1.setOwnedProperty(9, true);
-                                pl1.removeMoney(places[9].getPrice());
+                                places[pl1.getCurrentLocation()].setOwned(true);
+                                pl1.setOwnedProperty(pl1.getCurrentLocation(), true);
+                                pl1.addPlace(places[pl1.getCurrentLocation()]);
+                                pl1.removeMoney(places[pl1.getCurrentLocation()].getPrice());
                                 break;
                             }
                             else if(ans=='n')
@@ -496,30 +678,29 @@ int main(){
                         }
                     }
                 }
-                else if(places[9].isOwned() == true)
+                else if(places[pl1.getCurrentLocation()].isOwned() == true)
                 {
-                    if(pl1.getOwnedProperty(9) == true)
+                    if(pl1.getOwnedProperty(pl1.getCurrentLocation()) == true)
                     {
                         if(pl1.getOwnedProperty(6) == true && pl1.getOwnedProperty(8) == true)
                         {
-                            if(places[6].getHouses() == 0 && places[8].getHouses() == 0)
+                            if(places[pl1.getCurrentLocation()].getHouses() == 0 && places[6].getHouses() >= 0 && places[8].getHouses() >= 0 && places[6].getHouses() <= 1 && places[8].getHouses()<=1)
                             {
                                 while(true)
                                 {
-                                    //Only did one house we gotta figure what to do... coding 4 houses for each place seems like hell 
-                                    cout<<"Would you like to buy House 1 at "<<places[9].getName()<<" for $50? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cout<<"Would you like to buy House 1 at "<<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getHouseCost()<<"? Enter 'y' for yes or 'n' for no."<<endl;
                                     cin>>ans;
                                     if(ans=='y')
                                     {    
-                                        if(pl1.getMoneyAmount() < 50)
+                                        if(pl1.getMoneyAmount() < places[pl1.getCurrentLocation()].getHouseCost())
                                         {
                                             cout<<"You don't have enough money to complete this purchase!"<<endl;
                                             break;
                                         }
                                         else
                                         {
-                                            pl1.removeMoney(50);
-                                            places[9].addHouse(0);
+                                            pl1.removeMoney(places[pl1.getCurrentLocation()].getHouseCost());
+                                            places[pl1.getCurrentLocation()].addHouse();
                                             break;
                                         }
                                     }
@@ -533,23 +714,125 @@ int main(){
                                     }
                                 }
                             }
+                            //Buy second house
+                            else if(places[pl1.getCurrentLocation()].getHouses() == 1 && places[6].getHouses() >= 1 && places[8].getHouses() >= 1 && places[6].getHouses() <= 2 && places[8].getHouses() <= 2)
+                            {
+                                while(true)
+                                {
+                                    cout<<"Would you like to buy House 2 at "<<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getHouseCost()<<"? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cin>>ans;
+                                    if(ans=='y')
+                                    {    
+                                        if(pl1.getMoneyAmount() < places[pl1.getCurrentLocation()].getHouseCost())
+                                        {
+                                            cout<<"You don't have enough money to complete this purchase!"<<endl;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            pl1.removeMoney(places[pl1.getCurrentLocation()].getHouseCost());
+                                            places[pl1.getCurrentLocation()].addHouse();
+                                            break;
+                                        }
+                                    }
+                                    else if(ans=='n')       
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout<<"Please enter a valid input!"<<endl;
+                                    }
+                                }
+                            }
+                            //Buy third house 
+                            else if(places[pl1.getCurrentLocation()].getHouses() == 2 && places[6].getHouses() >= 2 && places[8].getHouses() >= 2 && places[6].getHouses() <= 3 && places[8].getHouses() <= 3)
+                            {
+                                while(true)
+                                {
+                                    cout<<"Would you like to buy House 3 at "<<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getHouseCost()<<"? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cin>>ans;
+                                    if(ans=='y')
+                                    {    
+                                        if(pl1.getMoneyAmount() < places[pl1.getCurrentLocation()].getHouseCost())
+                                        {
+                                            cout<<"You don't have enough money to complete this purchase!"<<endl;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            pl1.removeMoney(places[pl1.getCurrentLocation()].getHouseCost());
+                                            places[pl1.getCurrentLocation()].addHouse();
+                                            break;
+                                        }
+                                    }
+                                    else if(ans=='n')       
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout<<"Please enter a valid input!"<<endl;
+                                    }
+                                }                               
+                            }
+                            //Buy fourth house
+                            else if(places[pl1.getCurrentLocation()].getHouses() == 3 && places[6].getHouses() >= 3 && places[8].getHouses() >= 3 && places[6].getHouses() <= 4 && places[8].getHouses() <= 4)
+                            {
+                                while(true)
+                                {
+                                    cout<<"Would you like to buy House 4 at "<<places[pl1.getCurrentLocation()].getName()<<" for $"<<places[pl1.getCurrentLocation()].getHouseCost()<<"? Enter 'y' for yes or 'n' for no."<<endl;
+                                    cin>>ans;
+                                    if(ans=='y')
+                                    {    
+                                        if(pl1.getMoneyAmount() < places[pl1.getCurrentLocation()].getHouseCost())
+                                        {
+                                            cout<<"You don't have enough money to complete this purchase!"<<endl;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            pl1.removeMoney(places[pl1.getCurrentLocation()].getHouseCost());
+                                            places[pl1.getCurrentLocation()].addHouse();
+                                            break;
+                                        }
+                                    }
+                                    else if(ans=='n')       
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout<<"Please enter a valid input!"<<endl;
+                                    }
+                                }
+                            } 
                         }
                     }
-                    else if(pl2.getOwnedProperty(9) == true)
+                    else if(pl2.getOwnedProperty(pl1.getCurrentLocation()) == true)
                     {
-                        if(places[9].getHouses() == 0)
-                        {
-                            pl1.removeMoney(places[9].getRent());
-                            pl2.addMoney(places[9].getRent());
-                        }
-                        else if(places[9].getHouses() == 1)
-                        {
-                            pl1.removeMoney(places[9].getRent());
-                            pl2.addMoney(places[9].getRent());
-                        }
+                            pl1.removeMoney(places[pl1.getCurrentLocation()].getRent());
+                            pl2.addMoney(places[pl1.getCurrentLocation()].getRent());
                     }
                 }
             }
+            //Index 10
+            if(pl1.getCurrentLocation() == 10)
+            {
+                //Nothing happens in jail
+            }
+            //Index 11
+            if(pl1.getCurrentLocation() == 11)
+            {
+                
+            }
+            //Index 12
+            if(pl1.getCurrentLocation() == 12)
+            {
+                
+            }            
+
+
             printMap(pl1.getCurrentLocation(), pl2.getCurrentLocation());
         }
         // else
@@ -575,4 +858,6 @@ int main(){
         }
     }
     cout<<pl1.getMoneyAmount();
+    cout<<places[9].getHouses()<<endl;
+    cout<<places[8].getRent();
 }
