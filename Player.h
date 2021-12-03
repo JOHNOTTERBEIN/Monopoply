@@ -41,4 +41,7 @@ class Player {
 		void removeMoney(int amount);
 		void addPlace(Place p);
 		vector<Place> listPlaces();
+		void addHouse(string name);
+		void removeHouse(string name);
+		void removePlace(string name);
 };
