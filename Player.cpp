@@ -2,6 +2,7 @@
 // Recitation: 215 – Luis Mieses Gomez, Recitation: 118 – Naga Sistla
 // Project 3
 
+#include <iostream>
 #include "Player.h"
 
 using namespace std;
@@ -12,6 +13,7 @@ Player::Player(){
 	previousLocation = 0;
 	for(int i = 0; i < 40; i++)
     {
+		//Used to set all properties to the default value: not owned by the player
 		indexOfLocation[i] = false;
 	}
 	alive = true;
@@ -101,11 +103,23 @@ void Player::removeHouse(string name){
 		}
 	}
 }
-
 void Player::removePlace(string name){
 	for(int i = 0; i<places.size(); i++){
 		if(places[i].getName()==name){
-			places.erase(i);
+			places.erase(places.begin()+i);
 		}
 	}
+}
+
+void Player::applyCard(Card card){
+    cout << card.getDes() << endl;
+    if(card.getMovetf()){
+        moveP(card.getMove());
+    }
+    if(card.getPostf()){
+        setLocation(card.getPos());
+    }
+    if(card.getMoneytf()){
+        addMoney(card.getMoney());
+    }
 }
