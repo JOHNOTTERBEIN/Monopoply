@@ -41,6 +41,12 @@ int Card::getMoney(){
 bool Card::getMoneytf(){
     return moneytf;
 }
+int Card::getPos(){
+    return position;
+}
+bool Card::getPostf(){
+    return positiontf;
+}
 
 //setters
 void Card::setName(string n){
@@ -61,20 +67,3 @@ void Card::setMoney(int m){
 void Card::setMoneytf(bool m){
     moneytf = m;
 }
-
-//functions
-
-//this will read out the description and apply whatever the card does to the player
-// void Card::applyCard(){
-//     cout << description << endl;
-//     if(movementtf){
-//         player.movePlayer(movement);
-//     }
-//     if(positiontf){
-//         player.setLocation(position);
-//     }
-//     if(moneytf){
-//         player.giveMoney(money);
-//     }
-
-// }
