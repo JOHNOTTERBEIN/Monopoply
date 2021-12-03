@@ -5,9 +5,9 @@
 
 #include <iomanip>
 #include <string>
-#include "Player.h"
 using namespace std;
-
+#ifndef CARD_H_
+#define CARD_H_
 class Card{
     private:
         string name;
@@ -29,6 +29,8 @@ class Card{
         bool getMovetf();
         int getMoney();
         bool getMoneytf();
+        int getPos();
+        bool getPostf();
 
         //setters
         void setName(string n);
@@ -37,9 +39,5 @@ class Card{
         void setMovetf(bool m);
         void setMoney(int m);
         void setMoneytf(bool m);
-
-        //functions
-
-        //this will read out the description and apply whatever the card does to the player
-        void applyCard();
 };
+#endif
