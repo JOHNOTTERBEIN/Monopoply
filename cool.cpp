@@ -114,6 +114,9 @@ int main(){
             char ans;
         if(turn%2 == 0)
         {
+                if(pl1.getPreviousLocation() > pl1.getCurrentLocation()){
+                pl1.addMoney(200);
+                }
             cout<<"It is " << pl1.getPlayerName()<<"'s turn!"<<endl; 
             cout<<"You currently have: $"<<pl1.getMoneyAmount()<<endl;
             r1 = rand() % 6 +1;
@@ -122,9 +125,6 @@ int main(){
             if(pl1.getMoneyAmount() <= 0)
             {
                 break;
-            }
-            if(pl1.getPreviousLocation()>pl1.getCurrentLocation()){
-                pl1.addMoney(200);
             }
             if(pl1.getPreviousLocation() == 30 && pl1.getCurrentLocation() == 10)
             {
@@ -314,7 +314,7 @@ int main(){
             if(pl1.getCurrentLocation() == 2)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = communityChest[random];
                 pl1.applyCard(card);
             }
@@ -738,7 +738,7 @@ int main(){
             if(pl1.getCurrentLocation() == 7)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = chanceCards[random];
                 pl1.applyCard(card);
             }
@@ -1901,7 +1901,7 @@ int main(){
             if(pl1.getCurrentLocation() == 17)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = communityChest[random];
                 pl1.applyCard(card);
             }
@@ -2433,7 +2433,7 @@ int main(){
             if(pl1.getCurrentLocation() == 22)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = chanceCards[random];
                 pl1.applyCard(card);
             }
@@ -3773,7 +3773,7 @@ int main(){
             if(pl1.getCurrentLocation() == 33)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = communityChest[random];
                 pl1.applyCard(card);
             }
@@ -4018,7 +4018,7 @@ int main(){
             if(pl1.getCurrentLocation() == 36)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = chanceCards[random];
                 pl1.applyCard(card);
             }
@@ -4199,6 +4199,7 @@ int main(){
             if(pl1.getCurrentLocation() == 38)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl1.getCurrentLocation()].getName()<<endl;
+                pl1.removeMoney(200);        
             }
             //Index 39
             if(pl1.getCurrentLocation() == 39) 
@@ -4470,6 +4471,9 @@ int main(){
         }
         else
         {
+            if(pl2.getPreviousLocation()>pl2.getCurrentLocation()){
+            pl2.addMoney(200);
+            }
             cout<<"It is " << pl2.getPlayerName()<<"'s turn!"<<endl; 
             cout<<"You currently have: $"<<pl2.getMoneyAmount()<<endl;
             r1 = rand() % 6 +1;
@@ -4479,16 +4483,13 @@ int main(){
             {
                 break;
             }
-            if(pl2.getPreviousLocation()>pl2.getCurrentLocation()){
-                pl2.addMoney(200);
-            }
             if(pl2.getPreviousLocation() == 30 && pl2.getCurrentLocation() == 10)
             {
                 pl2.setLocation(30);
             }
             pl2.moveP(total);
             cout<<endl;
-            printMap(pl2.getCurrentLocation(), pl1.getCurrentLocation());
+            printMap(pl1.getCurrentLocation(), pl2.getCurrentLocation());
             //Index 0
             if(pl2.getCurrentLocation() == 0){
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl2.getCurrentLocation()].getName()<<endl;
@@ -4670,7 +4671,7 @@ int main(){
             if(pl2.getCurrentLocation() == 2)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl2.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = communityChest[random];
                 pl2.applyCard(card);
             }
@@ -5094,7 +5095,7 @@ int main(){
             if(pl2.getCurrentLocation() == 7)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl2.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = chanceCards[random];
                 pl2.applyCard(card);
             }
@@ -6257,7 +6258,7 @@ int main(){
             if(pl2.getCurrentLocation() == 17)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl2.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = communityChest[random];
                 pl2.applyCard(card);
             }
@@ -6789,7 +6790,7 @@ int main(){
             if(pl2.getCurrentLocation() == 22)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl2.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = chanceCards[random];
                 pl2.applyCard(card);
             }
@@ -8129,7 +8130,7 @@ int main(){
             if(pl2.getCurrentLocation() == 33)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl2.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = communityChest[random];
                 pl2.applyCard(card);
             }
@@ -8374,7 +8375,7 @@ int main(){
             if(pl2.getCurrentLocation() == 36)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl2.getCurrentLocation()].getName()<<endl;
-                int random = rand() % 12;
+                int random = rand() % 11;
                 Card card = chanceCards[random];
                 pl2.applyCard(card);
             }
@@ -8555,6 +8556,7 @@ int main(){
             if(pl2.getCurrentLocation() == 38)
             {
                 cout<<"You rolled a(n) "<<total<< " and landed on: "<<places[pl2.getCurrentLocation()].getName()<<endl;
+                pl2.removeMoney(200); 
             }
             //Index 39
             if(pl2.getCurrentLocation() == 39) 
@@ -8825,7 +8827,7 @@ int main(){
             }
         }
         turn++;
-        if(turn = 500)
+        if(turn == 500)
         {
             break;
         }
