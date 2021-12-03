@@ -80,6 +80,14 @@ void printMap(int pl1, int pl2){
 int main(){
     Player pl1 = Player();
     Player pl2 = Player();
+	string winner;
+	string filename = "example.txt";
+	ifstream in(filename);
+	if(in.is_open()){
+    		getline(in,winner);
+    		cout << "Congrats to the winner of last game, " << winner << endl;
+	}
+	in.close();
     Place places[] = {Place(), Place("Mediterranean Avenue", 60, 2,0,10,30,90,160, 50), Place(), Place("Baltic Avenue", 60, 4,0,20,60,180,320,50), Place(), Place("Reading Railroad", 200, 25,1,25,50,100,200,0),Place("Oriental Avenue", 100, 6,0,30,90,270,400, 50), Place(), Place("Vermont Avenue", 100, 6,0,30,90,270,400, 50),Place("Connecticut Avenue", 120, 8,0,40,100,300,450, 50), Place(), Place("St. Charles Place", 140, 10,0,50,150,450,625, 100), Place("Electric Company", 150, 40,1,40,100,100,100, 0), Place("States Avenue", 140, 10,0,50,150,450,625, 100), Place("Virginia Avenue", 160, 12,0,60,180,500,700, 100), Place("Pennsylvania Railroad", 200, 25,1,25,50,100,200, 0), Place("St. James PLace", 180, 14,0,70,200,550,750, 100), Place(), Place("Tennessee Avenue", 180, 14,0,70,200,550,750, 100),Place("New York Avenue", 200, 16,0,80,220,600,800, 100), Place(), Place("Kentucky Avenue", 220, 18,0,90,250,700,875, 150), Place(), Place("Indiana Avenue", 220, 18,0,90,250,700,875, 150),Place("Illinois Avenue", 240, 20,0,100,300,750,925, 150),Place("B. & O. Railroad", 200, 25,1,25,50,100,200, 0),Place("Atlantic Avenue", 260, 22,0,110,330,800,975, 150),Place("Ventnor Avenue", 260, 22,0,110,330,800,975, 150),Place("Water Works", 150, 40,1,40,100,100,100, 0),Place("Marvin Gardens", 280, 24,0,120,360,850,1025, 150), Place(), Place("Pacific Avenue", 300, 26,0,130,390,900,1100, 200),Place("North Carolina Avenue", 300, 26,0,130,390,900,1100, 200), Place(), Place("Pennsylvania Avenue", 320, 28,0,150,450,1000,1200, 200),Place("Short Line", 200, 25,1,25,50,100,200,0), Place(), Place("Park Place", 350, 35,0,175,500,1100,1300, 200), Place(), Place("Boardwalk", 400, 50,0,200,600,1400,1700, 200)};
     places[0].setName("Go, collect $200");
     places[2].setName("Community Chest");
@@ -8831,5 +8839,17 @@ int main(){
         {
             break;
         }
+	ofstream out(filename);
+	if(pl1.getMoneyAmount()>pl2.getMoneyAmount()){
+    		out << pl1.getPlayerName() << endl;
+    		out << "Money: $" << pl1.getMoneyAmount() << endl;
+	}
+	else{
+    		out << pl2.getPlayerName() << endl;
+    		out << "Money: $" << pl2.getMoneyAmount() << endl;
+	}
+	out.close();
+
     }
+	
 }
