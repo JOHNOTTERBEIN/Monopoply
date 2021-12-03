@@ -93,3 +93,19 @@ void Player::addHouse(string name){
 		}
 	}
 }
+
+void Player::removeHouse(string name){
+	for(int i = 0; i<places.size(); i++){
+		if(places[i].getName()==name){
+			places[i].removeHouse();
+		}
+	}
+}
+
+void Player::removePlace(string name){
+	for(int i = 0; i<places.size(); i++){
+		if(places[i].getName()==name){
+			places.erase(i);
+		}
+	}
+}
