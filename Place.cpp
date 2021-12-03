@@ -14,6 +14,7 @@ Place::Place(){
     price = 0;
     rent = 0;
     numHouses = 0;
+    house0 = 0;
     house1 = 0;
     house2 = 0;
     house3 = 0;
@@ -28,6 +29,7 @@ Place::Place(string n, int p, int r, int nh, int h1, int h2, int h3, int h4, int
     price = p;
     rent = r;
     numHouses = nh;
+    house0 = r;
     house1 = h1;
     house2 = h2;
     house3 = h3;
@@ -93,5 +95,21 @@ void Place::addHouse(){
             numHouses++;
             setRent(house4);
         }
+    }
+}
+
+void Place::removeHouse(){
+    numHouses--;
+    if(numHouses == 0){
+        setRent(house0);
+    }
+    else if(numHouses == 1){
+        setRent(house1);
+    }
+    else if(numHouses == 2){
+        setRent(house2);
+    }
+    else if(numHouses == 3){
+        setRent(house3);
     }
 }
