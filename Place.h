@@ -6,7 +6,8 @@
 #include <iomanip>
 #include <string>
 using namespace std;
-
+#ifndef PLACE_H_
+#define PLACE_H_
 class Place{
     private:
         string name;
@@ -46,3 +47,4 @@ class Place{
         void addHouse();
         void removeHouse();
 };
+#endif
