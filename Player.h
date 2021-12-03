@@ -2,13 +2,12 @@
 // Author: John Otterbein, Adrian Nica
 // Recitation: 215 – Luis Mieses Gomez, Recitation: 118 – Naga Sistla
 // Project 3
-
-
-
 #include <string>
 #include <vector>
 #include "Place.h"
-
+#include "Card.h"
+#ifndef PLAYER_H_
+#define PLAYER_H_
 using namespace std;
 
 class Player {
@@ -44,4 +43,7 @@ class Player {
 		void addHouse(string name);
 		void removeHouse(string name);
 		void removePlace(string name);
+		void applyCard(Card card);
 };
+
+#endif
