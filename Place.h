@@ -13,6 +13,7 @@ class Place{
         int price;
         int rent;
         int numHouses;
+        int house0;
         int house1;
         int house2;
         int house3;
@@ -43,4 +44,5 @@ class Place{
         //Adds a house to the place and increases the rent in accordance
         //Makes sure 5 is the max amount of houses
         void addHouse();
+        void removeHouse();
 };
